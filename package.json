@@ -1,0 +1,26 @@
+{
+  "name": "corona_livedata_web",
+  "version": "1.0.0",
+  "description": "A website that's show all information about the COVID-19 virus",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "author": "deepzS2",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
+    "counterup2": "^1.0.4",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.0",
+    "faker": "^4.1.0"
+  },
+  "proxy": "https://covid-19-dados-abertos.p.rapidapi.com/covid/v1.0/all"
+}

@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Bellota Text', cursive;
+}
+
+main .container #welcome {
+  margin-top: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+
+main .container #country {
+  margin-top: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+main .container #country-data .font-weight-bold {
+  color: black !important;
+}
+
+main .container #flag {
+  width: 100%;
+  height: 100%;
+}
+
+main .container #data p {
+  font-size: 1.5em;
+}
+
+main .container #table-data thead tr th {
+  cursor: pointer;
+  position: relative;
+  background-color: #cfd9df;
+}
+
+main .container .info-country .row .card {
+  -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.35);
+          box-shadow: 0 0 15px rgba(0, 0, 0, 0.35);
+}
+/*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,52 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Bellota Text',
+        cursive;
+}
+
+main {
+    .container {
+        #welcome {
+            margin-top: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+        }
+
+        #country {
+            margin-top: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        #country-data {
+            .font-weight-bold {
+                color: black !important;
+            }
+        }
+
+        #flag {
+            width: 100%;
+            height: 100%;
+        }
+
+        #data {
+            p {
+                font-size: 1.5em;
+            }
+        }
+
+        #table-data {
+            thead tr th {
+                cursor: pointer;
+                position: relative;
+                background-color: #cfd9df;
+            }
+        }
+
+        .info-country .row .card {
+            box-shadow: 0 0 15px rgba(0, 0, 0, .35);
+        }
+    }
+}

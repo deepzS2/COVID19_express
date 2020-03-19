@@ -1,0 +1,77 @@
+<%- contentFor('body') %>
+<div class="container">
+  <section id="country" class="jumbotron text-center display-4 section-1 p-7">
+    <h4 class="display-4 font-weight-bolder"><%= country.country %></h4>
+    <img class="img-fluid" src="<%= country.flag %>" alt="<%= country.country %>" />
+  </section>
+  <section id="country-data" class="jumbotron text-center section-2">
+    <div class="info-covid">
+      <h1 class="display-3">Todas as informações sobre o</h1>
+      <h1 class="display-4">COVID-19</h1>
+      <p class="lead">
+        Para aqueles que não sabem o <span class="font-weight-bold">COVID-19</span> é uma doença infecciosa causada pelo
+        coronavírus da síndrome respiratória aguda grave 2 (SARS-CoV-2). <span class="font-weight-bold">Os sintomas mais
+          comuns são febre, tosse e
+          dificuldade em respirar.</span> Cerca de 80% dos casos confirmados são ligeiros ou assintomáticos e a maioria
+        recupera
+        sem sequelas. No entanto, 15% são infeções graves que necessitam de oxigénio e 5% são infeções muito graves que
+        necessitam de ventilação. Os casos mais graves podem evoluir para pneumonia grave com insuficiência respiratória
+        aguda, falência de vários órgãos e morte.
+        A doença foi primeiramente encontrada em 2019 na cidade de Wuhan, China, e se espalhou globalmente, resultando
+        na pandemia de 2019–20.
+      </p>
+    </div>
+    <div class="info-country mt-5">
+      <div id="counter-div" class="row justify-content-center">
+        <% Object.keys(country.data).forEach(data => { %>
+        <div class="card mb-5 mr-5 col-md-3">
+          <div class="card-body text-center">
+            <h5 class="card-title h2 mt-2 counter">
+              <%= country.data[data] %>
+            </h5>
+            <h6 class="card-subtitle mb-2 text-muted">
+              <%= data.charAt(0).toUpperCase() + data.slice(1).replace(/_/g, " ") %>
+            </h6>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+  var a = 0;
+  $(window).scroll(function () {
+
+    var oTop = $('#counter-div').offset().top - window.innerHeight;
+    if (a == 0 && $(window).scrollTop() > oTop) {
+      $('.counter').each(function () {
+        var $this = $(this),
+          countTo = $this.text().replace("%", ""),
+          final = $this.text();
+        $({
+          countNum: 0
+        }).animate({
+            countNum: countTo
+          },
+
+          {
+
+            duration: 4000,
+            easing: 'swing',
+            step: function () {
+              $this.text(Math.floor(this.countNum));
+            },
+            complete: function () {
+              $this.text(final);
+              //alert('finished');
+            }
+
+          });
+      });
+      a = 1;
+    }
+
+  });
+</script>

@@ -1,0 +1,73 @@
+<%- contentFor('body') %>
+<div class="container">
+    <section id="welcome" class="jumbotron text-center display-4 section-1">
+        Pagina inicial
+    </section>
+
+    <section id="data" class="jumbotron text-center section-2">
+        <table id="table-data" class="table table-bordered table-hover table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        ID
+                    </th>
+                    <th scope="col">
+                        País
+                    </th>
+                    <th scope="col">
+                        Casos
+                    </th>
+                    <th scope="col">
+                        Mortes
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <% countries.forEach(function(item) { %>
+                <tr id="<%= item.id %>">
+                    <th scope="row" class="item-id">
+                        <%= item.id %>
+                    </th>
+                    <td class="country">
+                        <a href="/country/<%= item.id %>">
+                            <%= item.country %>
+                        </a>
+                    </td>
+                    <td class="cases">
+                        <% if (item.data.covid_cases) {%>
+                        <%= item.data.covid_cases %>
+                        <% } else { %>
+                        <%= 0 %>
+                        <% } %>
+                    </td>
+                    <td class="fatalities">
+                        <% if (item.data.fatalities) {%>
+                        <%= item.data.fatalities %>
+                        <% } else { %>
+                        <%= 0 %>
+                        <% } %>
+                    </td>
+                </tr>
+                <% }); %>
+
+            </tbody>
+        </table>
+    </section>
+</div>
+
+<script>
+    const getCellValue = (tr, idx) => tr.children[idx].innerText || tr.children[idx].textContent;
+
+    const comparer = (idx, asc) => (a, b) => ((v1, v2) =>
+        v1 !== '' && v2 !== '' && !isNaN(v1) && !isNaN(v2) ? v1 - v2 : v1.toString().localeCompare(v2)
+    )(getCellValue(asc ? a : b, idx), getCellValue(asc ? b : a, idx));
+
+    // do the work...
+    document.querySelectorAll('th').forEach(th => th.addEventListener('click', (() => {
+        const table = th.closest('table').lastElementChild;
+        Array.from(table.querySelectorAll('tbody tr:nth-child(n+1)'))
+            .sort(comparer(Array.from(th.parentNode.children).indexOf(th), this.asc = !this.asc))
+            .forEach(tr => table.appendChild(tr));
+    })));
+</script>
