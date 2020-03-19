@@ -61,10 +61,22 @@
             duration: 4000,
             easing: 'swing',
             step: function () {
-              $this.text(Math.floor(this.countNum));
+              if (!countTo) {
+                $this.text("0");
+              } else if (isNaN(countTo)) {
+                $this.text("0%")
+              } else {
+                $this.text(Math.floor(this.countNum));
+              }
             },
             complete: function () {
-              $this.text(final);
+              if (!counTo) {
+                $this.text("0");
+              } else if (isNaN(countTo)) {
+                $this.text("0%")
+              } else {
+                $this.text(final);
+              }
               //alert('finished');
             }
 
